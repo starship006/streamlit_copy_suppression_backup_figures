@@ -173,7 +173,7 @@ for freeze_ln in [True, False]:
 
 
 
-st.write("## Plots of Attention Scores/Probs against Query Intervention")
+st.write("## Plots of Attention Scores/Probs against Query Intervention in GPT2-Small")
 
 st.write("*Turn on Wide Mode (Settings -> Wide mode) if this isn't showing fully and is annoying*")
 
