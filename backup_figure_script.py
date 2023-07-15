@@ -177,10 +177,12 @@ st.write("## Plots of Attention Scores/Probs against Query Intervention")
 
 st.write("*Turn on Wide Mode (Settings -> Wide mode) if this isn't showing fully and is annoying*")
 
-st.write("The following is an intervention in which we take the output of a certain head, and add it into the query of another one. We can (sort of) use this to detect copy suppression. While we see more confirming results for the Negative Heads, the results for the [Name Mover Heads and Backup Heads](https://arxiv.org/abs/2211.00593) are a bit more nuanced.")
+st.write("The following is an intervention in which we take the output of a certain head and add (a scaled version of) it into the query of another one. We can (sort of) use this to detect copy suppression. While we see more confirming results for the Negative Heads, the results for the [Name Mover Heads and Backup Heads](https://arxiv.org/abs/2211.00593) are a bit more nuanced.")
+
 # insert intervention_image.jpeg on streamlit page. make it 400 pixels wide
 st.image("intervention_diagram.png", width = 400)
 
+st.write("Note that the three rows are different inputs into the head - the whole head output, the output of the head perpendicular to the IO unembedding, and the output of the head parallel to it.")
 
 # Define the label-to-variable mapping
 label_mapping = {
