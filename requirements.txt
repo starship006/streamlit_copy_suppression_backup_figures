@@ -1,0 +1,9 @@
+einops==0.6.1
+fancy_einsum==0.0.3
+jaxtyping==0.2.20
+numpy==1.25.0
+pandas==2.0.1
+plotly==5.14.1
+streamlit==1.22.0
+torch==2.0.1
+tqdm==4.65.0
