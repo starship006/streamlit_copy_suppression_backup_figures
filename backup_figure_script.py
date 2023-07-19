@@ -103,6 +103,27 @@ def run_query_intervention_with_setup(scaling_amounts, head_type, scores = True,
     results_storage[encode_name] = result
     return result
 
+
+
+# Define the label-to-variable mapping
+label_mapping = {
+    "Key Backup Heads": "key_backup",
+    "All Backup Heads": "backup",
+    "Name Mover Heads": "NMH",
+    "Negative Heads": "negative"
+}
+
+
+# Define reverse mapping
+reverse_label_mapping = {
+    "key_backup": "Key Backup Head",
+    "backup": "All Backup Head",
+    "NMH": "Name Mover Head",
+    "negative": "Negative Head"
+}
+
+
+
 # %%
 def display_attn_scores(head_type, scores = True,  freeze_ln = False, only_S1 = True, head = (9,9)):
     
@@ -114,7 +135,7 @@ def display_attn_scores(head_type, scores = True,  freeze_ln = False, only_S1 = 
     fig = make_subplots(rows = 3, cols = 5, subplot_titles = ["IO", "S1", "S2","IO - S1", "BOS"], shared_yaxes=True)
     fig.update_layout(height = 900, width = 1200)
 
-    fig.update_layout(title = "Adding Directions to " + head_type + f" | scores = {scores} | freeze_ln = {freeze_ln}")
+    fig.update_layout(title = reverse_label_mapping[head_type] +  f" Attention {'Scores' if scores else 'Probabilities'} from Adding " + str(head) + " Components into Queries " + f"(Freeze Layernorm = {freeze_ln})")
     colors = [
         "pink", "darkviolet", "blue", "purple", "turquoise", "red", "green", "yellow", "orange", "cyan", "magenta",
         "lime", "maroon", "navy", "olive", "teal", "aqua", "silver", "gray", "black", "white", "indigo", "gold", "brown",
@@ -183,14 +204,6 @@ st.write("The following is an intervention in which we take the output of a cert
 st.image("intervention_diagram.png", width = 400)
 
 st.write("Note that the three rows are different inputs into the head - the whole head output, the output of the head perpendicular to the IO unembedding, and the output of the head parallel to it.")
-
-# Define the label-to-variable mapping
-label_mapping = {
-    "Key Backup Heads": "key_backup",
-    "All Backup Heads": "backup",
-    "Name Mover Heads": "NMH",
-    "Negative Heads": "negative"
-}
 
 # Create a list of display labels
 display_labels = list(label_mapping.keys())
