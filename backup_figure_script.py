@@ -135,7 +135,7 @@ def display_attn_scores(head_type, scores = True,  freeze_ln = False, only_S1 = 
     fig = make_subplots(rows = 3, cols = 5, subplot_titles = ["IO", "S1", "S2","IO - S1", "BOS"], shared_yaxes=True)
     fig.update_layout(height = 900, width = 1200)
 
-    fig.update_layout(title = reverse_label_mapping[head_type] +  f" Attention {'Scores' if scores else 'Probabilities'} from Adding " + str(head) + " Components into Queries " + f"(Freeze Layernorm = {freeze_ln})")
+    fig.update_layout(title = reverse_label_mapping[head_type] +  f" Attention {'Scores' if scores else 'Probabilities'} from Adding " + str(head) + " Components into Queries " + f"(Freeze LayerNorm = {freeze_ln})")
     colors = [
         "pink", "darkviolet", "blue", "purple", "turquoise", "red", "green", "yellow", "orange", "cyan", "magenta",
         "lime", "maroon", "navy", "olive", "teal", "aqua", "silver", "gray", "black", "white", "indigo", "gold", "brown",
