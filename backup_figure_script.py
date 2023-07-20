@@ -33,8 +33,9 @@ from plotly.subplots import make_subplots
 neg_m_heads = [(10,7), (11,10)]
 name_mover_heads = [(9,9), (9,6), (10,0)]
 backup_heads = [(9,0), (9,7), (10,1), (10,2), (10,6), (10,10), (11,2), (11,9)]
-key_backup_heads = [(10,2), (10,10), (11,2)]
-strong_neg_backup_heads = [(11,2), (10,2), (11,6)]
+key_backup_heads = [(10,2), (10,6), (10,10), (11,2)]
+strong_neg_backup_heads = [(11,2), (10,2), (10,0), (11,6)]
+
 
 
 
@@ -47,7 +48,7 @@ import pickle
 results_storage = {}
 
 # to load dictionary (if you dont have, simply comment out the below lines):
-with open('saved_dictionary.pkl', 'rb') as f:
+with open('new_saved_dictionary.pkl', 'rb') as f:
     results_storage = pickle.load(f)
 
 # %%
@@ -183,7 +184,8 @@ def display_attn_scores(head_type, scores = True,  freeze_ln = False, only_S1 = 
 results_storage.keys()
 
 # %%
-scaling_amounts = torch.linspace(-8, 8, 21)
+scaling_amounts = torch.linspace(-5, 5, 28)
+
 for freeze_ln in [True, False]:
     for scores in [True, False]:
         for headtype in ["backup", "NMH", "negative", "key_backup"]:
